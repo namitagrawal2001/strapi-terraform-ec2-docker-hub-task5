@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "devops_projects",
+  "info": {
+    "singularName": "devops-project",
+    "pluralName": "devops-projects",
+    "displayName": "DevOpsProject"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "tool_stack": {
+      "type": "string"
+    },
+    "project_status": {
+      "type": "enumeration",
+      "enum": [
+        "planned",
+        "in-progress",
+        "completed"
+      ]
+    }
+  }
+}
