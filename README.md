@@ -1,117 +1,82 @@
-# Welcome to PearlThoughts Internship Program
+# Task 5 - Deploy Strapi on EC2 using Terraform and Docker
 
-We are thrilled to welcome you to the PearlThoughts team! This internship is designed to provide you with valuable hands-on experience, deepen your understanding of technology, and help you hone your skills in a collaborative, innovative environment.
+## 📌 Project Objective
 
-# Policies and Guidelines
+The goal of this task was to containerize a Strapi application and deploy it on an AWS EC2 instance using Terraform. The deployment process is fully automated using Infrastructure as Code.
 
-## Training and Attendance
+---
 
-### Training Sessions
-- **Schedule**: Every weekday at 10:30 AM 
-- **Attendance**: MANDATORY - Missing sessions affects your evaluation
-- **Duration**: Full attention required during training hours
+## 🔧 Work Done in This Project
 
-### Working Hours
-- **Availability**: 10 AM to 6 PM on all working days
-- **Active Participation**: Required in all team activities and discussions
+### 1️⃣ Strapi Setup
+- Created a Strapi application
+- Configured SQLite as default database
+- Built admin panel using production build
 
-## Daily Requirements
+---
 
-### 📝 Pull Requests (PR)
-- **Deadline**: Must be raised by end of each day
-- **Content**: Include all work completed during the day
-- **Consequence**: No PR = Marked absent for that day
+### 2️⃣ Docker Implementation
+- Created Dockerfile for Strapi
+- Used Node 20 Alpine image
+- Installed dependencies
+- Ran `npm run build` for admin panel
+- Exposed port 1337
+- Configured HOST=0.0.0.0
+- Pushed image to Docker Hub
 
-### 📋 Status Updates
-- Post daily progress in your team channel
-- Use the [[../Templates/Daily-Status-Template|Daily Status Template]]
-- Be specific about completed tasks and blockers
+Docker Image:
+namitagrawal/strapi-app:latest
 
-## Task Management
 
-### Assigned Tasks
-- Tasks assigned during morning training sessions
-- **Timely Completion**: Critical for your evaluation
-- Document challenges and solutions
+---
 
-### Task Tracking
-- Update task status regularly
-- Communicate blockers immediately
-- Seek help when needed
+### 3️⃣ Terraform Configuration
+- Created provider configuration
+- Defined EC2 instance resource
+- Configured Security Group:
+  - Port 22 (SSH)
+  - Port 1337 (Strapi)
+- Used Ubuntu AMI
+- Attached Key Pair
+- Automated Docker installation using user_data.sh
+- Pulled Docker image from Docker Hub inside EC2
+- Automatically started Strapi container
 
-## Evaluation Process
+---
 
-### Weekly Evaluations
-- **When**: Every Friday
-- **Criteria**:
-  - Task completion and quality
-  - Collaboration and teamwork
-  - Learning progress
-  - Professional conduct
+## 📂 Project Structure
 
-### Performance Metrics
-- Code quality and best practices
-- Meeting deadlines
-- Communication effectiveness
-- Problem-solving approach
+strapi-app/ → Strapi application with Dockerfile
+terraform/ → Terraform files (ec2.tf, provider.tf, variables.tf, user_data.sh)
 
-## Communication Channels
 
-### MS Teams Channels
+---
 
-| Channel | Purpose |
-|---------|------|
-| **Internship** | Key updates and announcements |
-| **Support** | Cloud resources and technical guidance |
-| **DevOps** | Deployment assistance and DevOps queries |
-| **Team [Name]** | Your team's collaboration space |
+## 🚀 Deployment Steps
 
-### Email Communication
-- **Support Queries**: hr@pearlthoughts.com
-- **Topics**: LOA requests, Teams access, evaluation results
-- **Important**: Avoid raising these in training sessions or Teams channels
+1. Build Docker image
+2. Push image to Docker Hub
+3. Run `terraform init`
+4. Run `terraform apply`
+5. Access Strapi via:
 
-## Termination Policy
+http://_3.6.40.114:1337/admin
 
-### ⚠️ Automatic Termination Triggers
-- Missing 3 consecutive training sessions
-- Failing to submit PR for 3 consecutive days
-- No prior notice will be given
 
-## Professional Conduct
+---
 
-### Expected Behavior
-1. **Professionalism**: Maintain professional demeanor in all interactions
-2. **Respect**: Treat all team members with respect
-3. **Punctuality**: Be on time for all meetings and deadlines
-4. **Integrity**: Be honest about your progress and challenges
-5. **Collaboration**: Actively help and learn from peers
+## 🛠 Technologies Used
 
-## Support Resources
+- Docker
+- Docker Hub
+- Terraform
+- AWS EC2
+- Ubuntu
+- Linux
 
-### Getting Help
-- Technical issues: Post in Support channel
-- DevOps help: Use DevOps channel
-- Administrative queries: Email hr@pearlthoughts.com
-- Task clarification: Ask your mentor during training
+---
 
-## Best Practices
+## 💻 Author
 
-### Code Quality
-- Follow project coding standards
-- Write clean, documented code
-- Test your changes before PR
-- Review peers' code constructively
+Namit Agrawal
 
-### Documentation
-- Document your learning journey
-- Share helpful resources with team
-- Maintain clear commit messages
-- Update project documentation
-
-## Your Journey Starts Here
-
-We are excited to have you on board and look forward to seeing you grow and succeed during your time with us. 
-
-**Welcome to PearlThoughts—let's embark on this journey together!**
-# The-Config-Crew
